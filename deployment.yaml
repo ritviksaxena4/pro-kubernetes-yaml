@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: 761018861517.dkr.ecr.us-east-1.amazonaws.com/devops-project:latest
+          image: 761018861517.dkr.ecr.us-east-1.amazonaws.com/devops-project:latest1
           ports:
             - containerPort: 8080
