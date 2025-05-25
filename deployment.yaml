@@ -1,19 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: devops-webapp
+  labels:
+    app: devops-webapp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-app
+      app: devops-webapp
   template:
     metadata:
       labels:
-        app: my-app
+        app: devops-webapp
     spec:
       containers:
-        - name: my-app
+        - name: devops-webapp
           image: 761018861517.dkr.ecr.us-east-1.amazonaws.com/devops-project:latest1
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /hello
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /hello
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
