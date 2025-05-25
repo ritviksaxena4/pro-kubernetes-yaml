@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: devops-webapp-service
+  labels:
+    app: devops-webapp
 spec:
   type: LoadBalancer
   selector:
-    app: my-app
+    app: devops-webapp
   ports:
     - protocol: TCP
       port: 80
